@@ -1,0 +1,14 @@
+name: pr-quick-test
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: quick test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
