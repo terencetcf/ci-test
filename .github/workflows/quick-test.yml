@@ -6,9 +6,20 @@ on:
 
 jobs:
   release:
-    name: quick test
+    name: test1
     runs-on: ubuntu-latest
+    environment: staging
     steps:
-      - name: Test
+      - name: echo variables
         run: |
           echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
+          echo ${{ github.event.deployment.ref }}
+
+  test:
+    name: test2
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: echo variables
+        run: |
+          echo ${{ github.event.deployment.ref }}
