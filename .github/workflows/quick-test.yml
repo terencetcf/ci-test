@@ -12,10 +12,11 @@ jobs:
     steps:
       - name: echo variables
         run: |
-          echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
-          echo "${{ github.event.deployment.ref }}"
-          echo "${{ github.event.environment }}"
-          echo "${{ github.jobs.release.environment }}"
+          echo "label name - ${{ toJson(github.event.pull_request.labels.*.name) }}"
+          echo "deployment ref - ${{ github.event.deployment.ref }}"
+          echo "event env - ${{ github.event.environment }}"
+          echo "job - ${{ github.jobs.release }}"
+          echo "job env - ${{ github.jobs.release.environment }}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
