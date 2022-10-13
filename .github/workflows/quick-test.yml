@@ -15,13 +15,15 @@ jobs:
           echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
           echo "${{ github.event.deployment.ref }}"
           echo "${{ github.event.environment }}"
+          echo "${{ jobs.release.environment }}"
+          echo "${{ jobs.release.environment.url }}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Dump job context
         env:
-          JOB_CONTEXT: ${{ toJson(job) }}
+          JOB_CONTEXT: ${{ toJson(jobs) }}
         run: echo "$JOB_CONTEXT"
       - name: Dump steps context
         env:
