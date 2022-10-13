@@ -16,7 +16,7 @@ jobs:
           echo "deployment ref - ${{ github.event.deployment.ref }}"
           echo "event env - ${{ github.event.environment }}"
           echo "job - ${{ github.jobs.release }}"
-          echo "job env - ${{ github.jobs.release.environment }}"
+          echo "job env - ${{ github.context.jobs.release.environment }}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
